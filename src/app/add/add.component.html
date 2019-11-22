@@ -1,0 +1,62 @@
+
+<div class="container">
+    <div class="panel panel-primary ">
+            <div class="panel-heading">
+                    <h3 class="panel-title">add new profile</h3>
+            </div>
+            <div class="panel-body">
+                
+            <form class="form-horizontal"  #addProfileForm = "ngForm" (submit)="addprofile()">
+                <div class="col-md-4">
+                    <!-- <image-upload>select image</image-upload> -->
+                    
+                    <input [(ngModel)]="model.photo" #photo="ngModel" name="photo" type="file" (change)="onfileSelected(event)">
+  
+                    <img src={{file_src}} class="img-responsive" alt="Image" height="140px" width="200px"> 
+                    
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        
+                        <label for="fullname" class="col-sm-4 control-label">fullname : </label>
+                        <div class="col-md-8">
+                            <input class="form-control" [(ngModel)]="model.fullname" #fullname="ngModel" name="name" required type="text">
+                        
+                            <div *ngIf="fullname.errors && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+                                <div [hidden]="!fullname.errors.required">
+                                    <span class="glyphicon glyphicon-exclamation-sign">Fullname is required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        
+                            <label for="age" class="col-sm-4 control-label">age : </label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="age" required maxlength="38" type="number" [(ngModel)]="model.age" #age="ngModel">
+                            
+                        <div *ngIf="age.errors && (age.dirty || age.touched)" class="alert alert-danger">
+                            <div [hidden]="!age.errors.required">
+                                <span class="glyphicon glyphicon-exclamation-sign">age is required</span>
+                            </div>
+                        </div>
+                        </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <button type="submit" class="btn btn-success" [disabled]="!addProfileForm.valid">save</button>
+                            <a class="btn btn-info" (click)="goback()">CANCEL</a>
+                             <div class="alert alert-success alert-dissmissible" id="msg1" style="display: none;"></div>
+                                
+                            </div>
+                           
+                        </div>
+                </div>
+                    
+            </form>
+                
+            </div>
+        </div>
+</div>
+

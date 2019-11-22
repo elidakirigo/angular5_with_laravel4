@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="container">    
+            <div class="alert alert-success alert-dissmissible" id="msg" style="display: none;"></div>
+        
+        <div class="panel panel-success" *ngFor="let profile of profiles">
+            <div class="panel-heading">
+                <!-- <h3 class="panel-title">header</h3> -->
+                <!-- <div class="col-md-8">
+                    <img class="img-fluid" src="" alt="">
+                </div> -->
+                <div class="col-md-8">{{profile.fullname}}</div>
+                <div class="col-md-4">
+                    <button routerLink="/edit/{{profile.id}}" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button (click)="deleteprofile(profile.id)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
