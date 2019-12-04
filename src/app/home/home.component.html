@@ -1,19 +1,42 @@
+
+<app-navbar></app-navbar>
+
 <div class="container">
-    <div class="container">    
-            <div class="alert alert-success alert-dissmissible" id="msg" style="display: none;"></div>
+    <div class="row">    
+        <div class="alert alert-success alert-dissmissible" id="msg" style="display: none;"></div>
         
+        <div class="panel panel-primary" *ngFor='let profile of myProfile'>
+              <div class="panel-heading">
+                    <h3 class="panel-title"> you're logged in as  {{ profile.fullname }}</h3>
+              </div>
+              <div class="panel-body">
+                   <div class="col-md-8"><img src={{file_src}} class="img-responsive" alt="Image" height="300px" width="340px"> </div>
+                   <div class="col-md-4" style="font-family: cursive; font-weight: 800;">
+                      profile name :<h4> {{profile.fullname}}</h4>
+                      profile age :<h4> {{profile.age}}</h4>
+                        <br>
+                       <br>
+                       <br>
+                       <button routerLink="/edit/{{id}}" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"> edit </span></button>
+                    <button (click)="deleteprofile(id)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> delete</span></button> 
+                   </div>
+              </div>
+        </div>
+        
+        <!-- <h1 class="alert alert-primary">employee names</h1><br><br>
         <div class="panel panel-success" *ngFor="let profile of profiles">
-            <div class="panel-heading">
-                <!-- <h3 class="panel-title">header</h3> -->
-                <!-- <div class="col-md-8">
-                    <img class="img-fluid" src="" alt="">
-                </div> -->
+            <div class="panel-heading">   
                 <div class="col-md-8">{{profile.fullname}}</div>
                 <div class="col-md-4">
                     <button routerLink="/edit/{{profile.id}}" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
                     <button (click)="deleteprofile(profile.id)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
+
+  <!-- <h3 class="panel-title">header</h3> -->
+                <!-- <div class="col-md-8">
+                    <img class="img-fluid" src="" alt="">
+                </div> -->

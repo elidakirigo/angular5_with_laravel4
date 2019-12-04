@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import {Routes , RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { EditComponent } from '../edit/edit.component';
-import { AddComponent } from '../add/add.component';
+import { AddComponent } from '../login/add.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   { path : '' , redirectTo: '/home', pathMatch : 'full' },
-  { path : 'home' , component : HomeComponent },
-  { path : 'add' , component : AddComponent },
+  { path : 'home' , component : HomeComponent , canActivate : [AuthGuard]},
+  { path : 'login' , component : AddComponent },
   { path : 'edit/:id' , component : EditComponent }
 ];
 

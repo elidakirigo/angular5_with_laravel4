@@ -24,7 +24,7 @@ export class EditComponent implements OnInit {
     private messageservice: MessageService) { }
 
   // tslint:disable-next-line: variable-name
-  // public file_src = '/assets/avatar.jpg';
+  public file_src = '/assets/avatar.jpg';
 
   profile: Profile;
 
@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
 
       this.profile = profile[0];
 
-      this.profile.id = id;
+      // this.profile.id = id;
 
     });
   }
@@ -50,6 +50,9 @@ export class EditComponent implements OnInit {
 
       this.messageservice.showMessage('div#msg1', 'alert-info', 'profile has been successfully updated', 'glyphicon-ok');
 
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 2000);
     });
   }
 }

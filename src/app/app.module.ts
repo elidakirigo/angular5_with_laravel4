@@ -6,12 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { AddComponent } from './add/add.component';
+import { AddComponent } from './login/add.component';
 import { EditComponent } from './edit/edit.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { ProfileService } from './services/profile.service';
 import { MessageService } from './services/message.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { MessageService } from './services/message.service';
     NavbarComponent,
     HomeComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,7 @@ import { MessageService } from './services/message.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ProfileService, MessageService],
+  providers: [ProfileService, MessageService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

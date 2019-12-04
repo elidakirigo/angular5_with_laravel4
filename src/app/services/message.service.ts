@@ -17,6 +17,6 @@ export class MessageService {
 
     $(selector).html('<h4><b></b>' + maxText + '</h4>');
 
-    $(selector).show().delay(1000).fadeIn().delay(3000).fadeOut();
+    $(selector).show().delay(1000).fadeIn().delay(4000).fadeOut();
   }
 }

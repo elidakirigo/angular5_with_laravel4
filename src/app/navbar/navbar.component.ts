@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -8,7 +9,7 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   setActive(menu: string) {
 
@@ -17,7 +18,23 @@ export class NavbarComponent implements OnInit {
     $('#' + menu).addClass('active');
   }
 
+  signIn() {
+
+  }
+  display() {
+    if (localStorage.getItem('userDetails') != null) {
+      $('.mybutton').show();
+    } else {
+      $('.mybutton').hide();
+    }
+  }
+  signOut() {
+    localStorage.clear();
+    this.display();
+    this.router.navigate(['/login']);
+  }
   ngOnInit() {
+    this.display();
   }
 
 }

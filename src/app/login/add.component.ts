@@ -48,10 +48,14 @@ export class AddComponent implements OnInit {
   }
   addprofile() {
 
-    this.profileservice.addprofile(this.model).subscribe(response => {
-      console.log(response);
+    this.profileservice.addprofile(this.model).subscribe((response) => {
+      // console.log(JSON.stringify(response));
+      const data = JSON.stringify(response);
+      localStorage.setItem('userDetails', data );
       this.messageservice.showMessage('div#msg1', 'alert-info', 'new PROFILE has been added successfully', 'GLYPHYCON-OK');
-
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 2000);
     });
   }
   ngOnInit() {

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   constructor(
@@ -17,6 +18,16 @@ export class HomeComponent implements OnInit {
 
   profiles: any;
 
+  myProfile: any;
+
+  user: any;
+
+  id: number;
+
+  // tslint:disable-next-line: variable-name
+  public file_src = '/assets/avatar.jpg';
+
+
   getAllProfile() {
 
     this.profileService.showAllProfile().subscribe(profiles => {
@@ -24,6 +35,21 @@ export class HomeComponent implements OnInit {
       this.profiles = profiles;
 
     });
+  }
+
+  getOneProfile() {
+    this.profileService.showOneProfile().subscribe(profiles => {
+
+      this.myProfile = profiles;
+    });
+  }
+
+  getUserName() {
+    this.user = JSON.parse(localStorage.getItem('userDetails'));
+
+    this.id = this.user.full.id;
+
+    return this.user.profile;
   }
 
   deleteprofile(id) {
@@ -35,9 +61,14 @@ export class HomeComponent implements OnInit {
 
         this.getAllProfile();
 
-        this.messageService.showMessage('div#msg', 'alert-info', 'profile has been successfully DELETED', 'glyphicon-ok');
+        // tslint:disable-next-line: max-line-length
+        this.messageService.showMessage('div#msg', 'alert-info', 'soory to see you go......profile has been successfully DELETED', 'glyphicon-ok');
 
+        setTimeout(() => {
+          localStorage.clear();
+          this.router.navigate(['/login']);
 
+        }, 5000);
       });
     } else {
       this.router.navigate(['/home']);
@@ -47,6 +78,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getAllProfile();
+
+    this.getUserName();
+
+    this.getOneProfile();
   }
 
 }

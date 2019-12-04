@@ -10,6 +10,10 @@ export class ProfileService {
 
   public server = 'http://localhost:8000/api/';
 
+  user: any;
+
+  id: any;
+
   constructor(private http: HttpClient) { }
 
   addprofile(info: any): Observable<any> {
@@ -23,6 +27,11 @@ export class ProfileService {
 
   }
 
+  showOneProfile() {
+    this.getUserID();
+
+    return this.http.get<any>(this.server + 'oneprofile/' + this.id);
+  }
   showAllProfile() {
 
     return this.http.get<any>(this.server + 'profile');
@@ -32,7 +41,11 @@ export class ProfileService {
 
     return this.http.get<any>(this.server + 'selected_profile/' + id);
   }
+  getUserID() {
+    this.user = JSON.parse(localStorage.getItem('userDetails'));
 
+    return this.id = this.user.full.id;
+  }
   editProfile(info) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
