@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <!-- <image-upload>select image</image-upload> -->
                     
-                    <input [(ngModel)]="profile.photo" #photo="ngModel" name="photo" type="file" (change)="onfileSelected(event)">
+                    <input [(ngModel)]="profile.photo" #photo="ngModel" name="photo" type="file">
   
                     <img src={{file_src}} class="img-responsive" alt="Image" height="140px" width="200px"> 
                     

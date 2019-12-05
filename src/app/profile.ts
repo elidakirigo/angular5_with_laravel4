@@ -1,7 +1,9 @@
 export class Profile {
 
-    fulllname: string;
+    fullname: string;
 
     age: number;
+
+    photo:string;
 
 }

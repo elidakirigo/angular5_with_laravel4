@@ -4,6 +4,7 @@ import { ProfileService } from '../services/profile.service';
 import { MessageService } from '../services/message.service';
 import { Profile } from '../profile';
 
+declare var $: any;
 
 
 @Component({
@@ -32,6 +33,7 @@ export class EditComponent implements OnInit {
 
       this.getOneProfile();
     }
+
   getOneProfile() {
 
     const id = this.route.snapshot.params.id;
@@ -43,6 +45,15 @@ export class EditComponent implements OnInit {
       // this.profile.id = id;
 
     });
+  }
+  onfileSelected(event) {
+    const e = $('input').val();
+
+    this.file_src = e;
+  }
+
+  goback() {
+    this.router.navigate(['/home']);
   }
   updateprofile() {
 
